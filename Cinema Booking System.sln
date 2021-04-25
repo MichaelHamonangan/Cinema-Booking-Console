@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cinema Booking System", "Cinema Booking System.csproj", "{7D16CE84-0C5F-40E4-8C2F-F0559C6BEF85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieDatabase", "..\MovieDatabase\MovieDatabase.csproj", "{8440F1A0-05D4-4384-9D38-D1234C515206}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D16CE84-0C5F-40E4-8C2F-F0559C6BEF85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D16CE84-0C5F-40E4-8C2F-F0559C6BEF85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D16CE84-0C5F-40E4-8C2F-F0559C6BEF85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D16CE84-0C5F-40E4-8C2F-F0559C6BEF85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8440F1A0-05D4-4384-9D38-D1234C515206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8440F1A0-05D4-4384-9D38-D1234C515206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8440F1A0-05D4-4384-9D38-D1234C515206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8440F1A0-05D4-4384-9D38-D1234C515206}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F4A2E32-F465-45D4-99D8-64C1A8876F4A}
+	EndGlobalSection
+EndGlobal
