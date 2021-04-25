@@ -43,7 +43,11 @@ namespace Cinema_Booking_System
                 while (indicator != 1)
                 {
                     string letak = "";
-                    Console.WriteLine("\nPilih Film :\n1. {0}\n2. {1}\n3. {2}",arrTemp[0].MovieName, arrTemp[1].MovieName, arrTemp[2].MovieName);
+                    Console.WriteLine("\nPilih Film :");
+                    for (int i = 0; i < arrTemp.Length; i++)
+                    {
+                        Console.WriteLine("{0}. {1}", i+1,arrTemp[i].MovieName);
+                    }
 
                     try
                     {
@@ -64,7 +68,6 @@ namespace Cinema_Booking_System
                     }
                     catch (Exception)
                     {
-
                         Console.WriteLine("Error!!! Input tidak sesuai");
                         continue;
                     }
