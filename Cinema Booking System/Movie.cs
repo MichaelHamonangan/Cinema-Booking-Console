@@ -73,20 +73,24 @@ namespace Cinema_Booking_System
             }
 
             movieSeat.printAvailableSeats();
-
             if (NOticket == 1)
             {
                 Console.Write("Pilih posisi tempat duduk \nPosisi : ");
-                letak = Console.ReadLine();
-
-                isValid = movieSeat.Reserve(letak);
             }
             else if (NOticket > 1)
             {
                 Console.Write("Pilih posisi tempat duduk (pisahkan satu sama lain dengan spasi (ex: 11 23 34)\nPosisi : ");
-                letak = Console.ReadLine();
+            }
 
-                isValid = movieSeat.Reserve(letak, NOticket);
+            letak = Console.ReadLine();
+            string[] arrLetak = movieSeat.ConvertToArray(letak, NOticket);
+            if (arrLetak != null)
+            {
+                isValid = movieSeat.Reserve(arrLetak);
+            }
+            else
+            {
+                isValid = false;
             }
 
             harga.totalPrices(NOticket);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Cinema_Booking_System
 {
-    class Seats
+    public class Seats
     {
         public string[,] posisi = new string[6, 8];
 
@@ -38,44 +38,14 @@ namespace Cinema_Booking_System
             }
         }
 
-        public bool Reserve(string letak)
+        public bool Reserve(string[] letak)
         {
-            int[] reserve = letak.Select(c => c - '0').ToArray();
-            try
-            {
-                int j = (int)reserve[0] - 1;
-                int k = (int)reserve[1] - 1;
-                if (posisi[j, k] == "Rs")
-                {
-                    Console.WriteLine("Error! Posisi tidak tersedia");
-                    return false;
-                }
-
-                posisi[j, k] = "Rs";
-                return true;
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Error! Posisi tidak valid");
-                return false;
-            }
-        }
-
-        public bool Reserve(string letak, int num)
-        {
-            char[] separator = { ' ' };
-            string[] temporary = letak.Split(separator);
-            if (num != temporary.Length)
-            {
-                Console.WriteLine("Error! input posisi tidak sesuai dengan jumlah tiket yang ingin dibeli");
-                return false;
-            }
-
-            foreach (string word in temporary)
+            foreach (string word in letak)
             {
                 int[] reserve = word.Select(c => c - '0').ToArray();
                 try
                 {
+
                     int j = (int)reserve[0] - 1;
                     int k = (int)reserve[1] - 1;
                     if (posisi[j, k] == "Rs")
@@ -83,7 +53,9 @@ namespace Cinema_Booking_System
                         Console.WriteLine("Error! Posisi tidak tersedia");
                         return false;
                     }
+                    //mengecek terlebih dahulu semua anggota valid atau tidak
                 }
+
                 catch (Exception)
                 {
                     Console.WriteLine("Error! Posisi tidak valid");
@@ -91,11 +63,39 @@ namespace Cinema_Booking_System
                 }
             }
 
-            foreach (string word in temporary)
+            foreach (string word in letak)
             {
-                bool isValid = Reserve(word);
+                int[] reserve = word.Select(c => c - '0').ToArray();
+ 
+                int j = (int)reserve[0] - 1;
+                int k = (int)reserve[1] - 1;
+                posisi[j, k] = "Rs";
             }
             return true;
+        }
+
+        public string[] ConvertToArray(string letak, int num)
+        {
+            char[] separator = { ' ' };
+            string[] temporary = letak.Split(separator);
+            if (num != temporary.Length)
+            {
+                Console.WriteLine("Error! input posisi tidak sesuai dengan jumlah tiket yang ingin dibeli!!!");
+                return null;
+            }
+
+            for (int i=0; i<num; i++)
+            {
+                for (int j = i+1; j<num; j++)
+                {
+                    if (temporary[i] == temporary[j])
+                    {
+                        Console.WriteLine("Error! input posisi tidak boleh sama!!!");
+                        return null;
+                    }
+                }
+            }
+            return temporary;
         }
     }
 }
