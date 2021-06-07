@@ -36,54 +36,61 @@ namespace Cinema_Booking_System
                 Console.WriteLine("Input Email : ");
                 string email = Console.ReadLine();
 
-                Custommer Subject = new Custommer(name, email);
-                Subject.Welcome();
-
-                int indicator = 0, index;
-                while (indicator != 1)
+                if (name != "" && email != "")
                 {
-                    string letak = "";
-                    Console.WriteLine("\nPilih Film :");
-                    for (int i = 0; i < arrTemp.Length; i++)
-                    {
-                        Console.WriteLine("{0}. {1}", i+1,arrTemp[i].MovieName);
-                    }
+                    Custommer Subject = new Custommer(name, email);
+                    Subject.Welcome();
 
-                    try
+                    int indicator = 0, index;
+                    while (indicator != 1)
                     {
-                        index = Convert.ToInt32(Console.ReadLine()) - 1;
-                        arrTemp[index].ShowMovieDetail();
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Error!!! Input tidak sesuai");
-                        continue;
-                    }
-
-                    Console.WriteLine("1.Beli\n0.Kembali");
-
-                    try
-                    {
-                        indicator = Convert.ToInt32(Console.ReadLine());
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Error!!! Input tidak sesuai");
-                        continue;
-                    }
-                    
-                    if (indicator == 1)
-                    {
-                        letak = arrTemp[index].ShowForm();
-                        if (letak != "")
+                        string letak = "";
+                        Console.WriteLine("\nPilih Film :");
+                        for (int i = 0; i < arrTemp.Length; i++)
                         {
-                            Subject.Payment(arrTemp[index]);
-                            MovieTicket tiket = new MovieTicket(arrTemp[index].MovieName, arrTemp[index].MovieDuration, arrTemp[index].startTime, arrTemp[index].MoviePrice, arrTemp[index].MovieDetail, Subject);
-                            tiket.printTicket(letak);
+                            Console.WriteLine("{0}. {1}", i + 1, arrTemp[i].MovieName);
+                        }
+
+                        try
+                        {
+                            index = Convert.ToInt32(Console.ReadLine()) - 1;
+                            arrTemp[index].ShowMovieDetail();
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Error!!! Input tidak sesuai");
+                            continue;
+                        }
+
+                        Console.WriteLine("1.Beli\n0.Kembali");
+
+                        try
+                        {
+                            indicator = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Error!!! Input tidak sesuai");
+                            continue;
+                        }
+
+                        if (indicator == 1)
+                        {
+                            letak = arrTemp[index].ShowForm();
+                            if (letak != "")
+                            {
+                                Subject.Payment(arrTemp[index]);
+                                MovieTicket tiket = new MovieTicket(arrTemp[index].MovieName, arrTemp[index].MovieDuration, arrTemp[index].startTime, arrTemp[index].MoviePrice, arrTemp[index].MovieDetail, Subject);
+                                tiket.printTicket(letak);
+                            }
                         }
                     }
+                    execute = Subject.Exit();
                 }
-                execute = Subject.Exit();
+                else
+                {
+                    Console.WriteLine("ERROR!!! Username dan email tidak boleh kosong!!!\n");
+                }
             }
         }
     }
